@@ -46,3 +46,12 @@ Ideas for experiments/thinking:
      Does it still mean pinning to an earlier-than-latest version of `pip`?
   2. Sort when in provisioning to set WAL on db.sqlite. Surely it won't hurt to pre-build it if absent.
 
+## Round not quite 2
+
+Hah! I've been using `vagrant` for 8 years now, and have been subsisting mostly on
+`vagrant (up|halt|destroy|box update)`, and the docs on how to craft a `Vagrantfile`.
+"I bet there's a way to..." led to finally going to other parts of the documentation,
+where I discovered `vagrant snapshot (push|pop|list|destroy)`.
+Well, damn, that would have saved some time. I should RTFM more often.
+
+This'll help in the current situation, pushing the need for sorting out db backup/restore further down the To Do list.

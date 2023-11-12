@@ -3,7 +3,7 @@
 $provision = <<SCRIPT
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get -y install python3.8-venv python3-pip
+sudo apt-get -y install python3.8-venv python3-pip sqlite3
 
 cd /vagrant
 python3 -m venv venv

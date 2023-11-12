@@ -12,7 +12,6 @@ With `vagrant` and `virtualbox` installed,
 setup up an Ubuntu 20.04 VM, and does the needful for installing
 Django 4.2.7 in a virtual environment.
 
-
 ## Running
 
     vagrant ssh
@@ -20,6 +19,21 @@ Django 4.2.7 in a virtual environment.
     . venv/bin/activate
     cd play
     ./manage.py runserver
+
+## Additional Setup
+
+Start the project. (Already done an merged.)
+
+    ./manage.py startproject play
+
+Run migrations. This'll create `play/db.sqlite3`
+
+    ./manage.py migrate
+
+Create a superuser
+
+    ./manage.py createsuperuser
+
 
 ## License
 

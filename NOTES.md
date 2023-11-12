@@ -17,6 +17,7 @@ Non Goals:
   - Social Auth
 
 To Do:
+  - Sort out how to backup/restore db to support experimental branches
   - Add an app and play with customizing the Admin
   - Build a no-Model Admin page
   - Add Job/JobState

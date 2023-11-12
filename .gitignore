@@ -1,2 +1,4 @@
 .vagrant
 venv
+__pycache__
+*.sqlite3

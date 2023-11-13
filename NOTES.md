@@ -17,6 +17,7 @@ Non Goals:
   - Social Auth
 
 To Do:
+  - Provision the db with `PRAGMA journal_mode=wal;`
   - Sort out how to backup/restore db to support experimental branches
   - Add an app and play with customizing the Admin
   - Build a no-Model Admin page

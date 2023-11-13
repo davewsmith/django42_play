@@ -74,3 +74,5 @@ ERROR: Could not install packages due to an EnvironmentError: [Errno 39] Directo
 ```
 
 No! A bit of searching suggests that doing `pip install --use-pep517` might help. I'll try that later.
+
+Also, try variants of `python -m pip install --upgrade --force --ignore-installed pip`

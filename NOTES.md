@@ -55,3 +55,22 @@ where I discovered `vagrant snapshot (push|pop|list|destroy)`.
 Well, damn, that would have saved some time. I should RTFM more often.
 
 This'll help in the current situation, pushing the need for sorting out db backup/restore further down the To Do list.
+
+Now, can I upgrade to the latest pip?
+
+```
+(venv) vagrant@ubuntu-focal:/vagrant$ pip --version
+pip 20.0.2 from /vagrant/venv/lib/python3.8/site-packages/pip (python 3.8)
+(venv) vagrant@ubuntu-focal:/vagrant$ pip install --upgrade pip
+Collecting pip
+  Downloading pip-23.3.1-py3-none-any.whl (2.1 MB)
+     ...
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+ERROR: Could not install packages due to an EnvironmentError: [Errno 39] Directory not empty: '_vendor'
+```
+
+No! A bit of searching suggests that doing `pip install --use-pep517` might help. I'll try that later.

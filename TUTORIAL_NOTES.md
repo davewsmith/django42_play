@@ -3,7 +3,7 @@
 Because I haven't started a Django project from scratch for entirely too long.
 
 See https://docs.djangoproject.com/en/4.2/faq/install/#what-python-version-can-i-use-with-django for Python version requirements.
-(Python 3.8.x is the minimum for 4.0, 4.1, and 4.2; Django 3.2 can be used with 3.6.x.)ZZ
+(Python 3.8.x is the minimum for 4.0, 4.1, and 4.2; Django 3.2 can be used with 3.6.x.)
 
 ## [Writing your first Django app, part 1](https://docs.djangoproject.com/en/4.2/intro/tutorial01/)
 

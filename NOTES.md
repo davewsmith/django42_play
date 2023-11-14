@@ -80,7 +80,9 @@ Also, try variants of `python -m pip install --upgrade --force --ignore-installe
 
 LATER: Oh. This a Vagrant issue. Time to upgrade. That ends this side quest.
 
-Starting points for round 2:
+Starting points for Admin explorations:
  - https://stackoverflow.com/questions/1379376/django-admin-section-without-model
  - https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_urls
  - https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#overriding-admin-templates
+ - https://www.rockandnull.com/django-admin-custom-view/
+ - https://blog.ovalerio.net/archives/2251

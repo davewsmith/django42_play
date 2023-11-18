@@ -19,13 +19,15 @@ Non Goals:
 To Do:
   - Provision the db with `PRAGMA journal_mode=wal;`
   - Sort out how to backup/restore db to support experimental branches
-  - Add an app and play with customizing the Admin
-  - Build a no-Model Admin page
   - Add Job/JobState
     - with a manage command to inject a Job
     - with some flavor of Task queue (Celery? Rq?)
     - with a custom Admin page to show queue statistics
     - results will need to go somewhere, so that too
+
+Done:
+  - Add an app and play with customizing the Admin
+  - Build a no-Model Admin page
 
 ## Round 1
 
@@ -106,3 +108,14 @@ What I'd envisioned is better achieved by
 Styling was somewhat straightforward. Punting collectstatic down the road to deployment.
 
 Now we have a way to put in a custom nav var. Next up, a custom, no-model view.
+
+Following https://blog.ovalerio.net/archives/2251
+
+Have a custom page hooked into the Admin index, and can show it. Things hook to be
+reasonably well hooked up.
+
+No need for my earlier custom nav now. It looks odd sitting there.
+
+TODO: remove the first cut at custom nav. it looks odd sitting there.
+
+TODO: Why's there a `|` in the page title? Missing subtitle?

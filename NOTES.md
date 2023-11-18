@@ -116,6 +116,4 @@ reasonably well hooked up.
 
 No need for my earlier custom nav now. It looks odd sitting there.
 
-TODO: remove the first cut at custom nav. it looks odd sitting there.
-
-TODO: Why's there a `|` in the page title? Missing subtitle?
+The machinations needed to get a clean slate for `admin/custom_page.html` deserve their own template to extend.

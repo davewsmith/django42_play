@@ -10,7 +10,9 @@ class CustomAdminSite(admin.AdminSite):
 
     def custom_page(self, request):
         context = {
-            "page_name": "custom page",
+            "page_name": "custom page",  # for breadcrumb
+            "title": "custom page",
+            "subtitle": "",
             # TODO pass real data
             **self.each_context(request),
         }

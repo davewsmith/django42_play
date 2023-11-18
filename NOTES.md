@@ -99,8 +99,10 @@ Didn't look quite as I expected, but I probably misread the Admin HTML/CSS.
 
 What I'd envisioned is better achieved by
 
-    {% block title %}{{ block.super }}
+    {% block header %}{{ block.super }}
     <div> my new stuff </div>
     {% endblock %}
 
-Leaving both in for the moment. Outta time, so a short round.
+Styling was somewhat straightforward. Punting collectstatic down the road to deployment.
+
+Now we have a way to put in a custom nav var. Next up, a custom, no-model view.

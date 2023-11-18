@@ -92,3 +92,15 @@ Starting points for Admin explorations:
 What's it take to make a model-less Admin page?
 
     ./manage.py startapp customadmin
+
+Added 'customadmin' to the top of `INSTALLED_APPS`, added a template to override `base_site.html`,
+and injected custom nav stuff.
+Didn't look quite as I expected, but I probably misread the Admin HTML/CSS.
+
+What I'd envisioned is better achieved by
+
+    {% block title %}{{ block.super }}
+    <div> my new stuff </div>
+    {% endblock %}
+
+Leaving both in for the moment. Outta time, so a short round.

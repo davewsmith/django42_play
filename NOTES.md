@@ -86,3 +86,9 @@ Starting points for Admin explorations:
  - https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#overriding-admin-templates
  - https://www.rockandnull.com/django-admin-custom-view/
  - https://blog.ovalerio.net/archives/2251
+
+## Round 2
+
+What's it take to make a model-less Admin page?
+
+    ./manage.py startapp customadmin

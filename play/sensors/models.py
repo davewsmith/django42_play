@@ -8,8 +8,14 @@ class Sensor(models.Model):
     created = models.DateTimeField(default=timezone.now)
     sensor_id = models.PositiveIntegerField()
 
+    def __str__(self):
+        return f'Sensor({self.id}, sensor_id={self.sensor_id})'
+
 
 class SensorSample(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
     sampled_at = models.DateTimeField(default=timezone.now)
     data = models.TextField()
+
+    def __str__(self):
+        return f'SensorSample({self.id}, sensor_id={self.sensor.sensor_id}, at {self.sampled_at})'

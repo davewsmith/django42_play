@@ -19,15 +19,15 @@ Non Goals:
 To Do:
   - Provision the db with `PRAGMA journal_mode=wal;`
   - Sort out how to backup/restore db to support experimental branches
-  - Add a management command to poll sensors
   - with a custom Admin page to show sensor samples
   - write a normal view page to show sensor samples
-  - Add a management action to poll selected sensors
+  - Add a management Action to poll selected sensors
 
 Done:
   - Add an app and play with customizing the Admin
   - Build a no-Model Admin page
   - Add Sensor/SensorSample
+  - Add a management command to poll sensors
 
 ## Round 1
 
@@ -200,3 +200,8 @@ I wonder if the intervention I added from the Stackoverflow question is having a
 Plumbed in support for `django-dotenv` per their docs. Added example usage.
 
 Plumbed in a management command to pool sensors and save fake samples. Now to decide where the real polling code belongs.
+
+And, yay! We're pulling data from api.purpleair.com.
+That isn't the intent of this exercise, though it provides an excuse to do a bit more Admin customization.
+
+Not a fan of embedding markup in models, but that's what the Django docs suggest for some custom Admin columns.

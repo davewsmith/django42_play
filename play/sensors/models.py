@@ -4,6 +4,7 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 import requests
 
 
@@ -40,6 +41,17 @@ class SensorSample(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
     sampled_at = models.DateTimeField(default=timezone.now)
     data = models.TextField()
+
+    @property
+    def temp_f(self):
+        j = json.loads(self.data)
+        if 'error' in j.keys():
+            return mark_safe(
+                f'<span style="color: red">{j["error"]}</span>')
+
+        temp = j['sensor']['temperature']
+        return mark_safe(
+            f'<span style="color: green">{temp}&deg;</span>')
 
     def __str__(self):
         return f'SensorSample({self.id}, sensor_id={self.sensor.sensor_id}, at {self.sampled_at})'

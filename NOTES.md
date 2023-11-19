@@ -117,3 +117,8 @@ reasonably well hooked up.
 No need for my earlier custom nav now. It looks odd sitting there.
 
 The machinations needed to get a clean slate for `admin/custom_page.html` deserve their own template to extend.
+
+## Round 3
+
+Added a context processor to add a `secret` variable for templates. Just because.
+

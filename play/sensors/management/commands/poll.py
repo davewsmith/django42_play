@@ -8,9 +8,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         sensors = Sensor.objects.all()
 
+        # TODO, maybe: De-dupe sensors so as to sample each only once
         for sensor in sensors:
-            sample = SensorSample(sensor=sensor, data="fake")
-            sample.save()
+            Sensor.sample(sensor)
             self.stdout.write(
-                self.style.SUCCESS(f'Fake polled sensor_id {sensor.sensor_id}')
+                self.style.SUCCESS(f'Polled sensor {sensor.sensor_id}')
             )

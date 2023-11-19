@@ -11,6 +11,10 @@ class Sensor(models.Model):
     def __str__(self):
         return f'Sensor({self.id}, sensor_id={self.sensor_id})'
 
+    @classmethod
+    def sample(cls, sensor):
+        sample = SensorSample(sensor=sensor, data='Still fake')
+        sample.save()
 
 class SensorSample(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)

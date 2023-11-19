@@ -122,3 +122,11 @@ The machinations needed to get a clean slate for `admin/custom_page.html` deserv
 
 Added a context processor to add a `secret` variable for templates. Just because.
 
+Added out outline of `admin/base.html`, because we might be using it again.
+
+Next up:
+  - Add an app to hold some config data
+  - Add a manage command to read the config, do a think, and save results
+  - Some way of visualizing results
+    - an app view
+    - a custom admin view? might have to deal with circular imports somehow

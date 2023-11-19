@@ -1,6 +1,10 @@
+import json
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+import requests
 
 
 class Sensor(models.Model):
@@ -13,8 +17,24 @@ class Sensor(models.Model):
 
     @classmethod
     def sample(cls, sensor):
-        sample = SensorSample(sensor=sensor, data='Still fake')
+        read_key = os.getenv('PURPLEAIR_READ_KEY')
+        if read_key is None:
+            j = {'error': 'No PURPLEAIR_READ_KEY in .env'}
+        else:
+            headers = {
+                "X-API-Key": read_key,
+            }
+            url = f'https://api.purpleair.com/v1/sensors/{sensor.sensor_id}'
+            r = requests.get(url, headers=headers)
+            if r.status_code != 200:
+                j = {'error': r.status_code() }
+            else:
+                # There's an opportunity here to remove cruft
+                j = r.json()
+
+        sample = SensorSample(sensor=sensor, data=json.dumps(j))
         sample.save()
+
 
 class SensorSample(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)

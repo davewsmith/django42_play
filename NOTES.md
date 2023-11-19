@@ -19,15 +19,13 @@ Non Goals:
 To Do:
   - Provision the db with `PRAGMA journal_mode=wal;`
   - Sort out how to backup/restore db to support experimental branches
-  - Add Job/JobState
-    - with a manage command to inject a Job
-    - with some flavor of Task queue (Celery? Rq?)
-    - with a custom Admin page to show queue statistics
-    - results will need to go somewhere, so that too
+  - Add a management command to poll sensors
+  - with a custom Admin page to show sensor samples
 
 Done:
   - Add an app and play with customizing the Admin
   - Build a no-Model Admin page
+  - Add Sensor/SensorSample
 
 ## Round 1
 
@@ -198,3 +196,5 @@ So it appears Django is involved in enforcing the cascase.
 I wonder if the intervention I added from the Stackoverflow question is having any effect? An experiment shows no, so removing it.
 
 Plumbed in support for `django-dotenv` per their docs. Added example usage.
+
+Plumbed in a management command to pool sensors and save fake samples. Now to decide where the real polling code belongs.

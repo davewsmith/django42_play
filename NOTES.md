@@ -130,3 +130,69 @@ Next up:
   - Some way of visualizing results
     - an app view
     - a custom admin view? might have to deal with circular imports somehow
+
+## Round 4
+
+    (venv) vagrant@ubuntu-focal:/vagrant/play$ ./manage.py test
+    Found 0 test(s).
+    System check identified no issues (0 silenced).
+
+    ----------------------------------------------------------------------
+    Ran 0 tests in 0.000s
+
+    OK
+
+Well, nothing fails. But on with the show!
+
+    ./manage.py startapp sensors
+
+and flesh out a simple set of models.
+
+SQLite3 needs to be induced to play well with foreign keys.
+[This Stackoverflow question](https://stackoverflow.com/questions/4477269/how-to-make-on-delete-cascade-work-in-sqlite-3-7-4) purports to have a recipe.
+I wonder if it could similarly be used to turn on WAL.
+
+    (venv) vagrant@ubuntu-focal:/vagrant/play$ python manage.py makemigrations sensors
+    Migrations for 'sensors':
+      sensors/migrations/0001_initial.py
+        - Create model Sensor
+        - Create model SensorSample
+
+Followed by this (with manual reformatting):
+
+    (venv) vagrant@ubuntu-focal:/vagrant/play$ ./manage.py sqlmigrate sensors 0001
+    BEGIN;
+    --
+    -- Create model Sensor
+    --
+    CREATE TABLE "sensors_sensor" (
+        "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+        "created" datetime NOT NULL, "sensor_id" integer unsigned NOT NULL CHECK ("sensor_id" >= 0),
+        "user_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED);
+    --
+    -- Create model SensorSample
+    --
+    CREATE TABLE "sensors_sensorsample" (
+        "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+        "sampled_at" datetime NOT NULL,
+        "data" text NOT NULL,
+        "sensor_id" bigint NOT NULL REFERENCES "sensors_sensor" ("id") DEFERRABLE INITIALLY DEFERRED);
+    CREATE INDEX "sensors_sensor_user_id_bb274f19" ON "sensors_sensor" ("user_id");
+    CREATE INDEX "sensors_sensorsample_sensor_id_5237ddb8" ON "sensors_sensorsample" ("sensor_id");
+    COMMIT;
+
+which isn't showing any trace of that cascading delete. Uh... Maybe a full rebuild of the db?
+
+Nope. sqlite3 `.schema` is showing
+
+    CREATE TABLE IF NOT EXISTS "sensors_sensorsample" (
+      "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+      "sampled_at" datetime NOT NULL,
+      "data" text NOT NULL,
+      "sensor_id" bigint NOT NULL REFERENCES "sensors_sensor" ("id") DEFERRABLE INITIALLY DEFERRED);
+
+Added the rest of the plumbing to get Sensor and SensorSample into the Admin. Looks good.
+
+Added a sensor, added a dummy sample, deleted the sensor, and noted that the Admin advise that the sample would also be deleted.
+So it appears Django is involved in enforcing the cascase.
+I wonder if the intervention I added from the Stackoverflow question is having any effect? An experiment shows no, so removing it.

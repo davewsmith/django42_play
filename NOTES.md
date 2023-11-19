@@ -21,6 +21,8 @@ To Do:
   - Sort out how to backup/restore db to support experimental branches
   - Add a management command to poll sensors
   - with a custom Admin page to show sensor samples
+  - write a normal view page to show sensor samples
+  - Add a management action to poll selected sensors
 
 Done:
   - Add an app and play with customizing the Admin

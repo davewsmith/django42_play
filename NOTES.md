@@ -196,3 +196,5 @@ Added the rest of the plumbing to get Sensor and SensorSample into the Admin. Lo
 Added a sensor, added a dummy sample, deleted the sensor, and noted that the Admin advise that the sample would also be deleted.
 So it appears Django is involved in enforcing the cascase.
 I wonder if the intervention I added from the Stackoverflow question is having any effect? An experiment shows no, so removing it.
+
+Plumbed in support for `django-dotenv` per their docs. Added example usage.

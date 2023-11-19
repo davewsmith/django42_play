@@ -1,3 +1,5 @@
+import os
+
 from django.contrib import admin
 from django.template.response import TemplateResponse
 from django.urls import path
@@ -13,7 +15,7 @@ class CustomAdminSite(admin.AdminSite):
             "page_name": "custom page",  # for breadcrumb
             "title": "custom page",
             "subtitle": "",
-            # TODO pass real data
+            "motd": os.getenv("MOTD", "No message today. Maybe there's no .env"),
             **self.each_context(request),
         }
         return TemplateResponse(request, "admin/custom_page.html", context)        

@@ -206,6 +206,26 @@ That isn't the intent of this exercise, though it provides an excuse to do a bit
 
 Not a fan of embedding markup in models, but that's what the Django docs suggest for some custom Admin columns.
 
+### Further populating a custom admin page
+
 Looking ahead a step `django.utils.module_loading.import_string` is
 a way to do a deferred import, as I might need to do in a custom Admin page.
 See how `admin/templates/backends/jinja2.py` handles the `context_processors` list.
+
+And... circular imports weren't a problem when adding the logged-in user's sensor count to the custom admin page. Cool.
+
+## Post Round 4 Thoughts
+
+The way to build custom admin pages is kind of weird. It's not a normal view. Can it support pagination? Probably.
+
+Injecting pages in sideways, by way of /admin/whatever/ urls that the Admin doesn't know about might kind of work,
+but could take a lot of futzing to reproduce context.
+
+Thinking that maybe getting links to non-Admin pages into the Admin list might be a good next step.
+Views for these would have to enforce the same requirements as Admin (`is_staff`).
+
+To recap: A goal is to provide extra, possibly non-Model tooling to staff users.
+Status dashboards, for example. Strictly speaking, these don't have to be part of the Admin,
+though the affordance for adding Admin urls does seem to want them to be.
+
+Gotta think on this.

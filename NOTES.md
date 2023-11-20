@@ -9,7 +9,6 @@ Options:
   - `x-forwarded-for` middleware. See [here](https://django-book-new.readthedocs.io/en/latest/chapter17.html)
   - See how Celery plays with 4.2
   - Django REST Framework
-  - `x-forwarded-for` middleware. See [here](https://django-book-new.readthedocs.io/en/latest/chapter17.html)
   - Run behind gunicorn with logging sorted out
 
 Non Goals:
@@ -205,3 +204,7 @@ And, yay! We're pulling data from api.purpleair.com.
 That isn't the intent of this exercise, though it provides an excuse to do a bit more Admin customization.
 
 Not a fan of embedding markup in models, but that's what the Django docs suggest for some custom Admin columns.
+
+Looking ahead a step `django.utils.module_loading.import_string` is
+a way to do a deferred import, as I might need to do in a custom Admin page.
+See how `admin/templates/backends/jinja2.py` handles the `context_processors` list.

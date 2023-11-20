@@ -193,14 +193,15 @@ Nope. sqlite3 `.schema` is showing
 Added the rest of the plumbing to get Sensor and SensorSample into the Admin. Looks good.
 
 Added a sensor, added a dummy sample, deleted the sensor, and noted that the Admin advise that the sample would also be deleted.
-So it appears Django is involved in enforcing the cascase.
+So it appears Django is involved in enforcing the cascade.
 I wonder if the intervention I added from the Stackoverflow question is having any effect? An experiment shows no, so removing it.
 
 Plumbed in support for `django-dotenv` per their docs. Added example usage.
 
 Plumbed in a management command to pool sensors and save fake samples. Now to decide where the real polling code belongs.
 
-And, yay! We're pulling data from api.purpleair.com.
+And, yay! We're pulling data from https://api.purpleair.com
+
 That isn't the intent of this exercise, though it provides an excuse to do a bit more Admin customization.
 
 Not a fan of embedding markup in models, but that's what the Django docs suggest for some custom Admin columns.

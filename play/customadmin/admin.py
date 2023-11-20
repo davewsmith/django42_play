@@ -4,6 +4,8 @@ from django.contrib import admin
 from django.template.response import TemplateResponse
 from django.urls import path
 
+from sensors.models import Sensor
+
 
 class CustomAdminSite(admin.AdminSite):
     site_header = "Custom Site Admin header"
@@ -16,9 +18,14 @@ class CustomAdminSite(admin.AdminSite):
             "title": "custom page",
             "subtitle": "",
             "motd": os.getenv("MOTD", "No message today. Maybe there's no .env"),
+            "sensor_count": self.get_sensor_count(request.user),
             **self.each_context(request),
         }
         return TemplateResponse(request, "admin/custom_page.html", context)        
+
+    def get_sensor_count(self, user):
+        return Sensor.objects.filter(user=user).count()
+        
 
     def get_urls(self):
         return [

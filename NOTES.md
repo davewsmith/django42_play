@@ -229,3 +229,20 @@ Status dashboards, for example. Strictly speaking, these don't have to be part o
 though the affordance for adding Admin urls does seem to want them to be.
 
 Gotta think on this.
+
+## A brief digression into making SQL happen
+
+Here's a way to iterate toward queries:
+
+```
+(venv) vagrant@ubuntu-focal:/vagrant/play$ ./manage.py shell
+...
+>>> from sensors.models import Sensor
+>>> q = Sensor.objects.filter(id=1)
+>>> print(q.query)
+SELECT "sensors_sensor"."id", "sensors_sensor"."user_id", "sensors_sensor"."created", "sensors_sensor"."sensor_id"
+FROM "sensors_sensor"
+WHERE "sensors_sensor"."id" = 1
+>>> 
+```
+

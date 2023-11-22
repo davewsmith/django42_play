@@ -232,6 +232,8 @@ Gotta think on this.
 
 ## A brief digression into making SQL happen
 
+https://docs.djangoproject.com/en/4.2/topics/db/queries/
+
 Here's a way to iterate toward queries:
 
 ```

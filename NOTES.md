@@ -273,5 +273,7 @@ outweighs the minor nuisance of having to change a file outside of the app when 
 Views, templates, and Forms oh my. Wondering how much progress I can make without leaving the dev runner.
 
  * Wired up a trivial view from sensors.
-
+ * Use a template
+ * Refactor out a base template
+ * Add a stylesheet (which, oddly, 404d until restarting the dev server)
 

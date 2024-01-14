@@ -248,3 +248,23 @@ WHERE "sensors_sensor"."id" = 1
 >>> 
 ```
 
+## Round 5 Prelims
+
+Back on (repaired) primary laptop. YAY!
+
+Two common approaches to URLs:
+
+  * project/urls.py knows about all of the views
+  * app/urls.py knows about that app's views, and is referenced from the project/urls.py, which only knows about apps
+  * (Class-based is a third, but uncommon in my experience)
+
+The advantages of the former is that all app urls are visible in one place.
+The downside, in theory, is that it makes apps less reusable across projects.
+In practices, apps rarely get reused.
+
+The official tutorial uses the latter, but oddly, `startapp` doesn't construct it. It's mentioned in a comment project/urls.py.
+One more file, but once a new app is hooked up, adding a view only touches files within the app.
+
+I can image an inflection point, but at the scale I'm working, the benefit of seeing all of the URLs layed out in one place
+outweighs the minor nuisance of having to change a file outside of the app when adding a view.
+

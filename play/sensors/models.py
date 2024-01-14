@@ -46,6 +46,13 @@ class SensorSample(models.Model):
     def temp_f(self):
         j = json.loads(self.data)
         if 'error' in j.keys():
+            return None
+        return j['sensor']['temperature']
+
+    @property
+    def temp_f_display(self):
+        j = json.loads(self.data)
+        if 'error' in j.keys():
             return mark_safe(
                 f'<span style="color: red">{j["error"]}</span>')
 

@@ -268,3 +268,10 @@ One more file, but once a new app is hooked up, adding a view only touches files
 I can image an inflection point, but at the scale I'm working, the benefit of seeing all of the URLs layed out in one place
 outweighs the minor nuisance of having to change a file outside of the app when adding a view.
 
+## Round 5
+
+Views, templates, and Forms oh my. Wondering how much progress I can make without leaving the dev runner.
+
+ * Wired up a trivial view from sensors.
+
+

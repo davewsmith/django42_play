@@ -3,5 +3,32 @@
 {% block title %}Sensors{% endblock %}
 
 {% block content %}
-<h1>Sensors go here</h1>
+
+<table>
+<thead>
+  <tr>
+    <th>Station</th>
+    <th>Temp</th>
+    <th>When</th>
+  </tr>
+</thead>
+<tbody>
+{% for sample in samples %}
+  <tr>
+    <td>{{ sample.sensor.sensor_id }}</td>
+    <td>{{ sample.temp_f }}&deg;</td>
+    <td>{{ sample.sampled_at }}</td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+
+<div style="padding-top: 1em;">
+<form action="/" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Add" />
+</form>
+</div>
+
 {% endblock %}

@@ -280,4 +280,4 @@ Views, templates, and Forms oh my. Wondering how much progress I can make withou
 Well, requiring login. Yeah. Getting login set up with templates is out-of-scope for this effort unless I later decide otherwise,
 so delegate login to Admin. Definitely mixed feelings here.
 
-
+Bludgeoned logging into working. Not happy with the result, but it works.

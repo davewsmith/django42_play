@@ -277,3 +277,7 @@ Views, templates, and Forms oh my. Wondering how much progress I can make withou
  * Refactor out a base template
  * Add a stylesheet (which, oddly, 404d until restarting the dev server)
 
+Well, requiring login. Yeah. Getting login set up with templates is out-of-scope for this effort unless I later decide otherwise,
+so delegate login to Admin. Definitely mixed feelings here.
+
+

@@ -10,6 +10,10 @@ class SensorIdForm(forms.Form):
 
 
 def index(request):
+    if not request.user.is_authenticated:
+        # Punt login to Admin
+        return HttpResponseRedirect('/admin')
+
     if request.method == 'POST':
         form = SensorIdForm(request.POST)
         if form.is_valid():
